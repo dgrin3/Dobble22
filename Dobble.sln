@@ -1,0 +1,36 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29609.76
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Web22", "Web22\Web22.csproj", "{8B2A52C9-1C43-49B1-AE4B-76ECE59CE401}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GetPictures", "GetPictures\GetPictures.csproj", "{1C724637-23C4-41C9-807D-5A4E40657376}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{5B4D07A4-999B-4202-A2F7-C06BD2BDB107}"
+	ProjectSection(SolutionItems) = preProject
+		README.md = README.md
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8B2A52C9-1C43-49B1-AE4B-76ECE59CE401}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8B2A52C9-1C43-49B1-AE4B-76ECE59CE401}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8B2A52C9-1C43-49B1-AE4B-76ECE59CE401}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8B2A52C9-1C43-49B1-AE4B-76ECE59CE401}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1C724637-23C4-41C9-807D-5A4E40657376}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1C724637-23C4-41C9-807D-5A4E40657376}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1C724637-23C4-41C9-807D-5A4E40657376}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1C724637-23C4-41C9-807D-5A4E40657376}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {9A7B199B-F29C-43AD-A64B-804C32A01AFE}
+	EndGlobalSection
+EndGlobal

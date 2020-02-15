@@ -1,2 +1,5 @@
-# Dobble22
-Educational project based on the Dobble game plinciples
+﻿# Dobble22
+Educational project based on the Dobble game principles
+Образовательный проект:
+Обучающее и развивающее веб-приложение на основе настольной игры Доббль
+Выполнено ученицей 10а класса школы 1557 Полиной при поддержке научного руководителя

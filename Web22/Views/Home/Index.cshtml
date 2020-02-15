@@ -1,0 +1,183 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Развивающая система на основе игры Доббль</title>
+    <style>
+        .messageText {
+            font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+            width: 99%;
+            font-size: 16px;
+        }
+        .pictureContainer {
+            display: block;
+            width: 60%;
+            height: 150px;
+        }
+
+        .gamePicture {
+            display: inline;
+            max-height: 125px;
+            max-width: 125px;
+            width: auto;
+            height: auto;
+        }
+        #playerTable {
+            font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+        #playerTable td, #playerTable th {
+            border: 1px solid #ddd;
+            padding: 8px;
+            font-size: 16px;
+        }
+        #playerTable th {
+            padding-top: 8px;
+            padding-bottom: 8px;
+            text-align: left;
+            background-color: forestgreen; /*#4CAF50;*/
+            color: white;
+        }
+
+        #chatTable {
+            font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        #infoTable {
+            font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        #messageTable {
+            font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+        .gameButton {
+            font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+            background-color: green; /*#4CAF50;*/
+            border: none;
+            color: white;
+            padding: 9px 18px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            cursor: pointer;
+            width: 100%;
+        }
+        .gameButton:disabled {
+            color: darkslategrey;
+            background-color: lightgrey;
+            cursor: default;
+        }
+    </style>
+</head>
+<body>
+    <table style="width:100%;">
+        <tr style="width:100%;">
+            <td style="width:60%;" valign="top">
+                <table style="width: 100%;">
+                    <tr>
+                        <td>
+                            <button class="gameButton" id="beginGameButton">Начать игру</button>
+                        </td>
+                        <td>
+                            <button class="gameButton" id="endGameButton">Закончить игру</button>
+                        </td>
+                        <td>
+                            <button class="gameButton" id="joinGameButton">Войти в игру</button>
+                        </td>
+                        <td>
+                            <button class="gameButton" id="quitGameButton">Выйти из игры</button>
+                        </td>
+                    </tr>
+                </table>
+                <div>&nbsp;</div>
+                <table id="infoTable">
+                    <tr>
+                        <td>Ваше имя</td>
+                        <td><input type="text" class="messageText" id="playerName" /></td>
+                    </tr>
+                    <tr>
+                        <td id="playerStatusLabel">Ваш статус</td>
+                        <td><input type="text" id="playerStatus" class="messageText" disabled="disabled" /></td>
+                    </tr>
+                    <tr>
+                        <td>Статус игры</td>
+                        <td><input type="text" id="gameStatus" class="messageText" disabled="disabled" /></td>
+                    </tr>
+                </table>
+                <div>&nbsp;</div>
+
+                <div id="gameCardRow">
+                    <div class="pictureContainer" align="left">
+                        <img class="gamePicture" src="~/images/A.png" alt="A" id="imageGame1">
+                        <img class="gamePicture" src="~/images/A.png" alt="B" id="imageGame2">
+                        <img class="gamePicture" src="~/images/A.png" alt="C" id="imageGame3">
+                        <img class="gamePicture" src="~/images/A.png" alt="D" id="imageGame4">
+                    </div>
+                    <div class="pictureContainer" align="left">
+                        <img class="gamePicture" src="~/images/A.png" alt="A" id="imageGame5">
+                        <img class="gamePicture" src="~/images/A.png" alt="B" id="imageGame6">
+                        <img class="gamePicture" src="~/images/A.png" alt="C" id="imageGame7">
+                        <img class="gamePicture" src="~/images/A.png" alt="C" id="imageGame8">
+                    </div>
+                </div>
+                <div id="playerCardRow" align="right">
+                    <div class="pictureContainer" align="right">
+                        <img class="gamePicture" src="~/images/B.png" alt="A" id="imagePlayer1">
+                        <img class="gamePicture" src="~/images/B.png" alt="B" id="imagePlayer2">
+                        <img class="gamePicture" src="~/images/B.png" alt="C" id="imagePlayer3">
+                        <img class="gamePicture" src="~/images/B.png" alt="D" id="imagePlayer4">
+                    </div>
+                    <div class="pictureContainer" align="right">
+                        <img class="gamePicture" src="~/images/B.png" alt="A" id="imagePlayer5">
+                        <img class="gamePicture" src="~/images/B.png" alt="B" id="imagePlayer6">
+                        <img class="gamePicture" src="~/images/B.png" alt="C" id="imagePlayer7">
+                        <img class="gamePicture" src="~/images/B.png" alt="C" id="imagePlayer8">
+                    </div>
+                </div>
+            </td>
+            <td style="width:40%;" valign="top">
+                <table id="playerTable">
+                    <tr>
+                        <th>Участник</th>
+                        <th>Счёт</th>
+                    </tr>
+                </table>
+                <div class="row">&nbsp;</div>
+                <table id="messageTable">
+                    <tr>
+                        <td>Сообщение</td>
+                        <td>
+                            <input type="text" class="messageText" id="messageInput" />
+                        </td>
+                    </tr>
+                </table>
+                <table style="width: 100%;">
+                    <tr>
+                        <td>
+                            <button class="gameButton" id="sendButton">Отправить сообщение</button>
+                        </td>
+                    </tr>
+                </table>
+                <div>&nbsp;</div>
+                <table id="chatTable">
+                </table>
+            </td>
+        </tr>
+    </table>
+    <script src="~/js/signalr/dist/browser/signalr.min.js"></script>
+    <script src="~/js/dobble/dobble.js"></script>
+</body>
+</html>
