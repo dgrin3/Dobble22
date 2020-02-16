@@ -31,33 +31,26 @@ function SetElements() {
 };
 
 connection.on("SetPlayerList", function (players) {
-    //var list = document.getElementById("playerList");
-    //while (list.firstChild) {
-    //    list.removeChild(list.firstChild);
-    //};
-    //var li;
-    //for (i = 0; i < players.length; i++) {
-    //    li = document.createElement("li");
-    //    li.textContent = "Участник: " + players[i].name + " Правильных ответов: " + players[i].score.toString();
-    //    list.appendChild(li);
-    //}
-    //if (!list.firstChild) {
-    //    li = document.createElement("li");
-    //    li.textContent = "Пока никто не подключился";
-    //    list.appendChild(li);
-    //}
-
     let i;
+    let maxScore;
+    let td0, td1;
     let table = document.getElementById("playerTable");
     let tableRows = table.getElementsByTagName('tr')
     while (tableRows.length > 1) {
         table.deleteRow(1);
     };
     if (players.length > 0) {
+        maxScore = players[0].score;
         for (i = 0; i < players.length; i++) {
             let tr = table.insertRow();
-            tr.insertCell(0).innerHTML = players[i].name;
-            tr.insertCell(1).innerHTML = players[i].score.toString();
+            td0 = tr.insertCell(0);
+            td0.innerHTML = players[i].name;
+            td1 = tr.insertCell(1);
+            td1.innerHTML = players[i].score.toString();
+            if (maxScore > 0 && players[i].score == maxScore) {
+                td0.classList.add("leader");
+                td1.classList.add("leader");
+            }
         }
     }
     else {
@@ -66,8 +59,16 @@ connection.on("SetPlayerList", function (players) {
         td.innerHTML = "Пока никто не подключился";
         td.colSpan = 2;
     }
-
 });
+
+function SetCard(card, type) {
+    var i;
+    var imageString;
+    for (i = 0; i < card.length; i++) {
+        imageString = (i + 1).toString();
+        document.getElementById("image" + type + imageString).src = "images/" + type + "/" + card[i].toString() + ".png";
+    }
+}
 
 connection.on("SetGameCard", function (card) {
     SetCard(card, "Game");
@@ -81,25 +82,8 @@ connection.on("SetPlayerCard", function (card) {
     SetCard(card, "Player");
 });
 
-function SetCard(card, type) {
-    var i;
-    var imageString;
-    for (i = 0; i < card.length; i++) {
-        imageString = (i + 1).toString();
-        document.getElementById("image" + type + imageString).src = "images/" + type + "/" + card[i].toString() + ".png";
-    }
-}
 
 connection.on("ReceiveMessage", function (message) {
-    //var msg = message.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
-    //var li = document.createElement("li");
-    //li.textContent = msg;
-    //var ul = document.getElementById("messagesList");
-    //ul.insertBefore(li, ul.childNodes[0]);
-    //while (ul.childNodes.length >= 10) {
-    //    ul.removeChild(ul.childNodes[9]);
-    //}
-
     let table = document.getElementById("chatTable");
     let tableRows = table.getElementsByTagName('tr')
     while (tableRows.length >= CHAT_LENGHT) {

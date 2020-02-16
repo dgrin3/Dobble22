@@ -94,6 +94,7 @@ namespace Web22.Services
                     p.Card = null;
                     p.Score = 0;
                 }
+
                 Status = DobbleConstants.GameJoiningStatusName;
 
                 UnlockGame();

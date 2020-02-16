@@ -1,4 +1,9 @@
-﻿using OfficeOpenXml;
+﻿using System.Drawing;
+using System.Drawing.Drawing2D;
+using System.Drawing.Imaging;
+using System.Drawing.Text;
+
+using OfficeOpenXml;
 using System;
 using System.IO;
 using System.Linq;
@@ -11,6 +16,7 @@ namespace GetPictures
         static void Main(string[] args)
         {
             //GeneratePack();
+            GenerateCaptions();
             Console.WriteLine("Hello World!");
         }
 
@@ -54,7 +60,7 @@ namespace GetPictures
         // Загрузка файлов с картинками
         private void DoanloadFiles()
         {
-            string path = @"C:\Project\Dev\Src\Dobble\GetPictures\Files";
+            string path = @"C:\Project\Dev\Git\Dobble22\GetPictures\Files";
             string fileName = path + @"\Dobble.xlsx";
             string content;
             string fileName2;
@@ -68,6 +74,21 @@ namespace GetPictures
                 content = content.Replace(@"IMAGE(""", string.Empty).Replace(@""")", string.Empty);
                 fileName2 = path + @"\" + (i - 1).ToString() + ".png";
                 wc.DownloadFile(content, fileName2);
+            }
+        }
+
+        // Генерация файлов с надписями
+        private static void GenerateCaptions()
+        {
+            string path = @"C:\Project\Dev\Git\Dobble22\GetPictures\Files";
+            var font = new Font(new FontFamily("Trebuchet MS"), 20.0f);
+            string phrase = "якорь, яблоко, птичка, бомба, бутылочка, лампочка, кактус, свеча, машина, морковь, кот, ромашка, сыр, часы, клевер, клоун, динозавр, доббль, собака, дельфин, дракон, капля, восклицательный знак, глаз, огонь, привидение, очки, молоток, сердце, конь, человек, лёд, иглу, ключ, божья коровка, кленовый лист, молния, губы, замок, луна, карандаш, вопросительный знак, ножницы, снеговик, череп, снежинка, паук, клякса, знак стоп, солнце, мишень, скрипичный ключ, дерево, черепаха, паутина, знак инь-янь, зебра";
+            string[] words = phrase.Split(", ");
+            int i = 0;
+            foreach (var word in words)
+            {
+                i++;
+                String2Img.DrawText(word,font,Color.Black,200, path + @"\" + i.ToString() + ".png");
             }
         }
     }
