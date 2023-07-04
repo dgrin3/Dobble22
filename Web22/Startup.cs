@@ -36,18 +36,14 @@ namespace Web22
             }
 
             app.UseStaticFiles();
+            app.UseRouting();
 
-            app.UseSignalR(routes =>
+            app.UseEndpoints(endpoints =>
             {
-                routes.MapHub<DobbleHub>("/dobbleHub");
+                endpoints.MapHub<DobbleHub>("/dobbleHub");
+                endpoints.MapControllerRoute(name: "default",
+                    pattern: "{controller=Home}/{action=Index}/{id?}");
             });
-            app.UseMvc(routes =>
-            {
-                routes.MapRoute(
-                    name: "default",
-                    template: "{controller=Home}/{action=Index}/{id?}");
-            });
-
         }
     }
 }
